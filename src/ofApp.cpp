@@ -27,7 +27,7 @@ void ofApp::setup(){
 void ofApp::update(){
     
     if(offSet>200){
-        cuts.clear();
+        polygons.clear();
         offSet = 0;
     }
     offSet += 1;
@@ -40,13 +40,13 @@ void ofApp::update(){
                                200.*cos(ofGetElapsedTimef()),
                                100));
     
-    if(planecut.size()>4){
+    if(planecut.size()>2){
         glmPolyline tmp = planecut.get2DConvexHull();
         
         float currentArea = tmp.getArea();
         
         if( abs(currentArea-prevArea) > threshold ){
-            cuts.push_back(tmp);
+            polygons.push_back(tmp);
             prevArea = currentArea;
         }
         
@@ -55,13 +55,14 @@ void ofApp::update(){
         bScanning = false;
     }
 
+    //  Compute new layer
+    //
     glmPlane plane;
     plane.set(glm::vec3(0,0,offSet), glm::vec3(0,0,1));
     
     IntersectionData id;
     
     planecut.clear();
-    
     for(int i=0;i<mesh.getUniqueFaces().size();i++){
         glmTriangle triangle;
         ofMeshFace face = mesh.getUniqueFaces().at(i);

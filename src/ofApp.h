@@ -30,7 +30,8 @@ public:
     ofPoint     centroid;
     
     glmPolyline planecut;
-    vector<glmPolyline> cuts;
+    vector<glmPolyline> polygons;
+    glmMesh     building;
     
     int     threshold;
     
