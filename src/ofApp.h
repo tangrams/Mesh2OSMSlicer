@@ -21,12 +21,10 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
-    glmMesh extrude(const glmPolyline &_poly, float min, float max );
-    
     ofEasyCam   cam;
     ofLight     light1,light2;
     
-    ofMesh      mesh;
+    glmMesh     mesh;
     ofPoint     centroid;
     
     glmPolyline planecut;
@@ -38,5 +36,7 @@ public:
     float   offSet;
     float   prevArea;
     
-    bool    bScanning;
+    bool    bOverModel;
+    bool    bWireframe;
+    bool    bShowLights;
 };

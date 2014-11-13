@@ -1,6 +1,9 @@
 #include "ofApp.h"
 
+#include "glmIO.h"
 #include "glmGL.h"
+#include "glmGeom.h"
+#include "glmTesselation.h"
 #include "glmIntersection.h"
 
 //--------------------------------------------------------------
@@ -9,18 +12,17 @@ void ofApp::setup(){
     ofSetVerticalSync(true);
     ofEnableAlphaBlending();
     
-    mesh.load("LIDar-SfM.ply");
-    centroid = mesh.getCentroid();
+    loadPLY( mesh, ofToDataPath("flatiron-l-s.ply") );
+    cout << mesh.getNormals().size() << endl;
+    centroid = toOf( getCentroid(mesh.getVertices()) );
     
-    light1.setDiffuseColor(ofFloatColor(0.7,0.7,1.));
+    light1.setDiffuseColor(ofFloatColor(0.3,0.3,0.7));
     light2.setDiffuseColor(ofFloatColor(1.,0.7,0.7));
-
+    
     threshold = 100;
     
-    ofMeshFace a;
-    ofPoint p;
-    
-    p.scale(1);
+    bWireframe = false;
+    bShowLights = false;
 }
 
 //--------------------------------------------------------------
@@ -28,31 +30,30 @@ void ofApp::update(){
     
     if(offSet>200){
         polygons.clear();
+        building.clear();
         offSet = 0;
     }
     offSet += 1;
     
-    light1.setPosition(ofPoint(100.*cos(ofGetElapsedTimef()*0.5),
-                              100.*sin(ofGetElapsedTimef()*0.5),
-                              500));
-    
-    light2.setPosition(ofPoint(200.*sin(ofGetElapsedTimef()),
-                               200.*cos(ofGetElapsedTimef()),
-                               100));
-    
-    if(planecut.size()>2){
+    if(planecut.size()>3){
         glmPolyline tmp = planecut.get2DConvexHull();
         
         float currentArea = tmp.getArea();
         
-        if( abs(currentArea-prevArea) > threshold ){
+        if( abs(currentArea-prevArea) > threshold || polygons.size() == 0){
             polygons.push_back(tmp);
+            
+            if(polygons.size()>1){
+                int last = polygons.size()-1;
+                extrude(building, polygons[last], polygons[last-1][0].z, polygons[last][0].z);
+            }
+            
             prevArea = currentArea;
         }
         
-        bScanning = true;
+        bOverModel = true;
     } else {
-        bScanning = false;
+        bOverModel = false;
     }
 
     //  Compute new layer
@@ -63,10 +64,13 @@ void ofApp::update(){
     IntersectionData id;
     
     planecut.clear();
-    for(int i=0;i<mesh.getUniqueFaces().size();i++){
+    vector<glm::ivec3> faces = mesh.getTriangles();
+    for(int i=0;i<faces.size();i++){
+        
         glmTriangle triangle;
-        ofMeshFace face = mesh.getUniqueFaces().at(i);
-        triangle.set(toGlm(face.getVertex(0)),toGlm(face.getVertex(1)),toGlm(face.getVertex(2)));
+        triangle.set(mesh.getVertices()[faces[i][0]],
+                     mesh.getVertices()[faces[i][1]],
+                     mesh.getVertices()[faces[i][2]]);
         
         id = PlaneTriangleIntersection(plane, triangle);
         if(id.isIntersection){
@@ -76,101 +80,87 @@ void ofApp::update(){
     }
 }
 
-glmMesh ofApp::extrude(const glmPolyline &_poly, float min, float max ){
-    glmMesh mesh;
-    
-    glmPolyline top, buttom;
-    
-    for (int i = 0; i < _poly.size(); i++) {
-        top.add(glm::vec3(_poly[i].x,_poly[i].y, max));
-        buttom.add(glm::vec3(_poly[i].x,_poly[i].y, min));
-    }
-    
-    mesh.add(top);
-    mesh.add(buttom);
-    
-    uint16_t indexOffset = (uint16_t)mesh.getVertices().size();
-    
-    glm::vec3 tan, nor;
-    
-    for (int i = 0; i < _poly.size() - 1; i++) {
-        
-        //For each vertex in the polygon, make two triangles to form a quad
-        //
-        glm::vec3 ip0 = glm::vec3(_poly[i].x,_poly[i].y,0);
-        glm::vec3 ip1 = glm::vec3(_poly[i+1].x,_poly[i+1].y,0);
-        
-        tan = ip1 - ip0;
-        nor = glm::cross(UP_NORMAL, tan);
-        nor = nor;
-        
-        mesh.addTexCoord(glm::vec2(1.,0.));
-        mesh.addVertex(ip0 + glm::vec3(0,0,min));
-        mesh.addNormal(nor);
-        mesh.addTexCoord(glm::vec2(0.,0.));
-        mesh.addVertex(ip1 + glm::vec3(0,0, min));
-        mesh.addNormal(nor);
-        
-        mesh.addTexCoord(glm::vec2(1.,1.));
-        mesh.addVertex(ip0 + glm::vec3(0,0, max));
-        mesh.addNormal(nor);
-        mesh.addTexCoord(glm::vec2(0.,1.));
-        mesh.addVertex(ip1 + glm::vec3(0,0, max));
-        mesh.addNormal(nor);
-        
-        mesh.addIndex(indexOffset);
-        mesh.addIndex(indexOffset + 2);
-        mesh.addIndex(indexOffset + 1);
-        
-        mesh.addIndex(indexOffset + 1);
-        mesh.addIndex(indexOffset + 2);
-        mesh.addIndex(indexOffset + 3);
-        indexOffset += 4;
-    }
-    
-    return mesh;
-}
-
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofBackground(0);
+    ofBackground(255);
     
+    //  Set scene
+    //
+    light1.setPosition(ofPoint(300.*cos(ofGetElapsedTimef()*0.5+PI),
+                               300.*sin(ofGetElapsedTimef()*0.5+PI),
+                               300.));
+    
+    light2.setPosition(ofPoint(200.*cos(ofGetElapsedTimef()*0.5),
+                               200.*sin(ofGetElapsedTimef()*0.5),
+                               200));
     float scale = 7.;
     
+    
+    //  Render
+    //
     cam.begin();
     
     ofPushMatrix();
     ofPushStyle();
     ofScale(scale, scale,scale);
     ofTranslate(-centroid);
+    ofTranslate(50, 0);
     
-    ofSetLineWidth(1);
-    ofSetColor(255,100);
-    mesh.drawWireframe();
+    //  Mesh wireframe
+    //
+    if(bWireframe){
+        ofSetLineWidth(1);
+        ofSetColor(0,100);
+        drawWireMesh(mesh);
+    }
     
-//    ofSetColor(0,255,255,30);
-//    plane.draw();
-
+    
+    //  Current intersected outline
+    //
     ofSetLineWidth(10);
     ofSetColor(255, 0, 0);
     ofNoFill();
     drawPolyline(planecut.get2DConvexHull());
     
+    if(bShowLights){
+        ofSetColor(light1.getDiffuseColor());
+        light1.draw();
+        ofSetColor(light2.getDiffuseColor());
+        light2.draw();
+    }
     
+    //  Reconstruction
+    //
     ofEnableLighting();
     light1.enable();
     light2.enable();
     ofPushMatrix();
-    ofTranslate(-50, 0);
-    ofSetColor(255);
-    ofNoFill();
-    for (int i = 1; i < cuts.size(); i++) {
-        drawMesh(extrude(cuts[i], cuts[i-1][0].z, cuts[i][0].z));
+    
+    if(!bWireframe){
+        ofSetColor(255);
+        drawMesh(mesh);
     }
     
-    if(bScanning && cuts.size() > 0){
-        drawMesh(extrude(cuts[cuts.size()-1], cuts[cuts.size()-1][0].z, offSet));
+    ofTranslate(-100, 0);
+    ofSetColor(255);
+    ofNoFill();
+    
+    if(bWireframe){
+        ofSetLineWidth(1);
+        ofSetColor(0,100);
+        drawWireMesh(building);
+        
+        if(bOverModel && polygons.size() > 0){
+            drawWireMesh( getExtrude(polygons[polygons.size()-1], polygons[polygons.size()-1][0].z, offSet) );
+        }
+    } else {
+        drawMesh(building);
+        
+        if(bOverModel && polygons.size() > 0){
+            drawMesh( getExtrude(polygons[polygons.size()-1], polygons[polygons.size()-1][0].z, offSet) );
+        }
     }
+    
     
     ofPopMatrix();
     light1.disable();
@@ -181,7 +171,8 @@ void ofApp::draw(){
     ofPopMatrix();
     cam.end();
     
-    ofDrawBitmapString("Area threshold: "+ ofToString(threshold), 15,15);
+    ofSetColor(0);
+    ofDrawBitmapString("Area threshold: "+ ofToString(threshold) + " (UP/DOWN)", 15,15);
 }
 
 //--------------------------------------------------------------
@@ -190,6 +181,10 @@ void ofApp::keyPressed(int key){
         threshold+=10;
     } else if (key == OF_KEY_DOWN){
         threshold-=10;
+    } else if (key == ' '){
+        bWireframe = !bWireframe;
+    } else if (key == 'l'){
+        bShowLights = !bShowLights;
     }
 }
 

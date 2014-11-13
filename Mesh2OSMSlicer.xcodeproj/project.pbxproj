@@ -13,6 +13,8 @@
 		326a450621374d9fd00f758f01cb05f3 /* ofxGlmTools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = e8e97a67fb15b4d321d30525772dd168 /* ofxGlmTools.cpp */; };
 		33cc09148c0f92f530f58664930bbcd9 /* glmFastPolyline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0f8bb7f9a9f4bdf49b1f6831bcba95dc /* glmFastPolyline.cpp */; };
 		373d343aaba9d3a7b28ed69fdc343371 /* glmPolyline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 770f0cf9e3a47ef11bd9051683851509 /* glmPolyline.cpp */; };
+		3DD373011A14FE6700167CF2 /* glmIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD372FF1A14FE6700167CF2 /* glmIO.cpp */; };
+		3DD373051A154E3E00167CF2 /* glmTesselation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD373031A154E3E00167CF2 /* glmTesselation.cpp */; };
 		7d5e699e173b8c7705a51a78ca467f36 /* glmIntersection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60bac01aa465f68bd2767289c0b6f693 /* glmIntersection.cpp */; };
 		9dca40ed37cbbd592475b080c5278913 /* glmPolarPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56a8515b4e6f53e5e22486b83fe124be /* glmPolarPoint.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
@@ -106,6 +108,10 @@
 		37f4d6dbb844a47f4d7fca9a96e05807 /* intersect.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = intersect.hpp; path = ../../../../../../Patricio/Desktop/openFrameworks/addons/ofxGlmTools/libs/glm/gtx/intersect.hpp; sourceTree = SOURCE_ROOT; };
 		386e873c2b07e238af4cd0233a2c4a0e /* glmString.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = glmString.h; path = ../../../../../../Patricio/Desktop/openFrameworks/addons/ofxGlmTools/libs/glmTools/glmString.h; sourceTree = SOURCE_ROOT; };
 		38703261bffe4ce835a41f53dfd598c1 /* _vectorize.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = _vectorize.hpp; path = ../../../../../../Patricio/Desktop/openFrameworks/addons/ofxGlmTools/libs/glm/detail/_vectorize.hpp; sourceTree = SOURCE_ROOT; };
+		3DD372FF1A14FE6700167CF2 /* glmIO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = glmIO.cpp; path = ../../../addons/ofxGlmTools/libs/glmTools/glmIO.cpp; sourceTree = "<group>"; };
+		3DD373001A14FE6700167CF2 /* glmIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = glmIO.h; path = ../../../addons/ofxGlmTools/libs/glmTools/glmIO.h; sourceTree = "<group>"; };
+		3DD373031A154E3E00167CF2 /* glmTesselation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = glmTesselation.cpp; path = ../../../addons/ofxGlmTools/libs/glmTools/glmTesselation.cpp; sourceTree = "<group>"; };
+		3DD373041A154E3E00167CF2 /* glmTesselation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = glmTesselation.h; path = ../../../addons/ofxGlmTools/libs/glmTools/glmTesselation.h; sourceTree = "<group>"; };
 		3a98bdbdca2d6dc0ddc425abddac03d9 /* glmGL.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = glmGL.h; path = ../../../../../../Patricio/Desktop/openFrameworks/addons/ofxGlmTools/libs/glmTools/glmGL.h; sourceTree = SOURCE_ROOT; };
 		3ad4f75280ac93607dd6d28d58ef528c /* vector_relational.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = vector_relational.hpp; path = ../../../../../../Patricio/Desktop/openFrameworks/addons/ofxGlmTools/libs/glm/vector_relational.hpp; sourceTree = SOURCE_ROOT; };
 		3b2148f7dd22a8a30ba9c98ab5b3463c /* glm.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = glm.cpp; path = ../../../../../../Patricio/Desktop/openFrameworks/addons/ofxGlmTools/libs/glm/detail/glm.cpp; sourceTree = SOURCE_ROOT; };
@@ -613,10 +619,14 @@
 				f393b0e5adf100a785491e6e4025b361 /* glmGeom.h */,
 				cdc784cb6bffd3d4e1361dca0a338ab2 /* glmGL.cpp */,
 				3a98bdbdca2d6dc0ddc425abddac03d9 /* glmGL.h */,
+				3DD372FF1A14FE6700167CF2 /* glmIO.cpp */,
+				3DD373001A14FE6700167CF2 /* glmIO.h */,
 				60bac01aa465f68bd2767289c0b6f693 /* glmIntersection.cpp */,
 				0b8c876d85a3296d62b171fc442feee7 /* glmIntersection.h */,
 				386e873c2b07e238af4cd0233a2c4a0e /* glmString.h */,
 				2e09125368db1f5a1dfc8d01ecc0be3b /* glmTransform.h */,
+				3DD373031A154E3E00167CF2 /* glmTesselation.cpp */,
+				3DD373041A154E3E00167CF2 /* glmTesselation.h */,
 				5965874827ed5ad57437ee60da9bdfd6 /* types */,
 			);
 			name = glmTools;
@@ -716,6 +726,8 @@
 				2ee15114f59d107ff5502b8b0bccc687 /* glmGeom.cpp in Sources */,
 				d8f680c2f76e42593622099de294e5b4 /* glmGL.cpp in Sources */,
 				7d5e699e173b8c7705a51a78ca467f36 /* glmIntersection.cpp in Sources */,
+				3DD373011A14FE6700167CF2 /* glmIO.cpp in Sources */,
+				3DD373051A154E3E00167CF2 /* glmTesselation.cpp in Sources */,
 				33cc09148c0f92f530f58664930bbcd9 /* glmFastPolyline.cpp in Sources */,
 				0666f7971b4d7725128f6aa9e8136ac6 /* glmMesh.cpp in Sources */,
 				9dca40ed37cbbd592475b080c5278913 /* glmPolarPoint.cpp in Sources */,
