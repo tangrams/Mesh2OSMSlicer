@@ -131,8 +131,8 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-//    ofBackground(255);
-    ofBackgroundGradient(ofFloatColor(0.9), ofFloatColor(1.));
+    ofBackground(255);
+//    ofBackgroundGradient(ofFloatColor(0.9), ofFloatColor(1.));
     float scale = 7.;
     float res = 100;
     float dist = 50;
