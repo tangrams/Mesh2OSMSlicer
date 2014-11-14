@@ -7,10 +7,13 @@
 
 What tools are?
 
-[libLAS](http://www.liblas.org/)
-[libPCL](http://pointclouds.org/)
-[MeshLab](http://meshlab.sourceforge.net/)
-[CloudCompare](http://www.danielgm.net/cc/)
+* [libLAS](http://www.liblas.org/)
+
+* [libPCL](http://pointclouds.org/)
+
+* [MeshLab](http://meshlab.sourceforge.net/)
+
+* [CloudCompare](http://www.danielgm.net/cc/)
 
 #### LIDar data
 
