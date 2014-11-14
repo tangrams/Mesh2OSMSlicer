@@ -58,8 +58,6 @@ CGAL
 
 Slicing a mesh 
 
-![12](images/12.gif)
-
 ![13](images/13.gif)
 
 
