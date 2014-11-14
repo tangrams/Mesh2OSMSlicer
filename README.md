@@ -39,15 +39,21 @@ That’s where photogrammetry came to my mind. This is also a relative old techn
 
 ![01](images/01.jpg)
 
-What to do if you can’t afford a LIDar devices?
-
-About SfM
-
-[Bundler](http://www.cs.cornell.edu/~snavely/bundler/)
+Probably the most famous is applications of this technology are [PhotoSynth](https://photosynth.net/) and [123D Catch](http://www.123dapp.com/catch). But the real deal is the open source project call [Bundler](http://www.cs.cornell.edu/~snavely/bundler/).
 
 <iframe width="420" height="315" src="//www.youtube.com/embed/vpTEobpYoTg" frameborder="0" allowfullscreen></iframe>
 
+“*Bundler takes a set of images, image features, and image matches as input, and produces a 3D reconstruction of camera and (sparse) scene geometry as output. The system reconstructs the scene incrementally, a few images at a time, using a modified version of the [Sparse Bundle Adjustment](http://users.ics.forth.gr/~lourakis/sba/) package of Lourakis and Argyros as the underlying optimization engine. Bundler has been successfully run on many Internet photo collections, as well as more structured collections*.”
+
+So I start taking pictures, lots and lots of pictures of the Flatiron. Why the Flatiron, well is two blocks from my work and is perfectly isolated, so I can take all the pictures I want around it.
+
 ![01](images/01a.gif)
+
+[Bundler](http://www.cs.cornell.edu/~snavely/bundler/) and [Furukawa’s CMVS algorithm](http://www.di.ens.fr/cmvs/) I found my making dense reconstructions of the Flatiron in minutes. But there was a problem. This points have no geo location at all, in fact are points floating in a random 3D universe.
+
+The next step was to import this points to openFrameworks (which I feel confortable with) to see if I was hable to use the GPS present on the EXIF header of the images to locate it. For that I made an [openFrameworks addon](https://github.com/patriciogonzalezvivo/ofxBundle) that let you import the bundle file and dense reconstruction. Then, I learn that phones GPS data is incredible noisy, so I end up mixing a couple of trick 
+
+
 
 Geo locating PointClouds
 
