@@ -53,8 +53,6 @@ So I start taking pictures, lots and lots of pictures of the Flatiron. Why the F
 
 The next step was to import this points to openFrameworks (which I feel confortable with) to see if I was hable to use the GPS present on the EXIF header of the images to locate it. For that I made an [openFrameworks addon](https://github.com/patriciogonzalezvivo/ofxBundle) that let you import the bundle file and dense reconstruction. Then, I learn that phones GPS data is incredible noisy, so I end up mixing a couple of trick plus some manual adjustments to show my point that is possible.
 
-![06](images/06.png)
-
 ![09](images/09.png)
 
 The result was a geo located point cloud render side to side to OSM data. 
