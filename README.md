@@ -12,7 +12,7 @@ MeshLab
 
 #### LIDar data
 
-[00](images/00.jpg)
+![00](images/00.jpg)
 
 [LIDar-Tools](https://github.com/tangrams/LIDar-tools)
 
@@ -24,11 +24,11 @@ MeshLab
 
 What to do if you can’t afford a LIDar devices?
 
-![01](images/01.gif)
+![01](images/01a.gif)
 
 Geo locating PointClouds
 
-[06](images/06.png)
+![06](images/06.png)
 
 ### From Point Clouds to Meshes
 
