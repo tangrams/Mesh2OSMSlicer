@@ -36,11 +36,11 @@ About SfM
 
 ![01](images/01a.gif)
 
-![10](images/10.gif)
-
 Geo locating PointClouds
 
 ![06](images/06.png)
+
+![09](images/09.png)
 
 <iframe src="//player.vimeo.com/video/110926839" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
