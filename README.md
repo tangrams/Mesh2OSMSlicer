@@ -1,7 +1,7 @@
 ## Non traditional 3D Mapping
 ##### From pointClouds to GeoJSON Polygons
 
-<iframe src="//player.vimeo.com/video/111857991" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe src="//player.vimeo.com/video/111857991?title=0&amp;byline=0&amp;portrait=0" width="575" height="323" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 I know nothing about cartography, beside the general understanding that the earth is not flat but maps are. That there are complicated equations, call projections, to make measurements “feet” in a two dimensional representations usually call map. That’s all.  
 
@@ -41,7 +41,7 @@ That’s where photogrammetry came to my mind. This is also a relative old techn
 
 Probably the most famous is applications of this technology are [PhotoSynth](https://photosynth.net/) and [123D Catch](http://www.123dapp.com/catch). But the real deal is the open source project call [Bundler](http://www.cs.cornell.edu/~snavely/bundler/).
 
-<iframe width="420" height="315" src="//www.youtube.com/embed/vpTEobpYoTg" frameborder="0" allowfullscreen></iframe>
+<iframe width="575" src="//www.youtube.com/embed/vpTEobpYoTg" frameborder="0" allowfullscreen></iframe>
 
 “*Bundler takes a set of images, image features, and image matches as input, and produces a 3D reconstruction of camera and (sparse) scene geometry as output. The system reconstructs the scene incrementally, a few images at a time, using a modified version of the [Sparse Bundle Adjustment](http://users.ics.forth.gr/~lourakis/sba/) package of Lourakis and Argyros as the underlying optimization engine. Bundler has been successfully run on many Internet photo collections, as well as more structured collections*.”
 
@@ -57,7 +57,7 @@ The next step was to import this points to openFrameworks (which I feel conforta
 
 The result was a geo located point cloud render side to side to OSM data. 
 
-<iframe src="//player.vimeo.com/video/110926839" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe src="//player.vimeo.com/video/110926839?title=0&amp;byline=0&amp;portrait=0" width="575" height="323" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 ### From Point Clouds to Meshes
 
