@@ -41,7 +41,7 @@ That’s where photogrammetry came to my mind. This is also a relative old techn
 
 Probably the most famous is applications of this technology are [PhotoSynth](https://photosynth.net/) and [123D Catch](http://www.123dapp.com/catch). But the real deal is the open source project call [Bundler](http://www.cs.cornell.edu/~snavely/bundler/).
 
-<iframe width="575" src="//www.youtube.com/embed/vpTEobpYoTg" frameborder="0" allowfullscreen></iframe>
+<iframe width="575 src="//www.youtube.com/embed/vpTEobpYoTg" frameborder="0" allowfullscreen></iframe>
 
 “*Bundler takes a set of images, image features, and image matches as input, and produces a 3D reconstruction of camera and (sparse) scene geometry as output. The system reconstructs the scene incrementally, a few images at a time, using a modified version of the [Sparse Bundle Adjustment](http://users.ics.forth.gr/~lourakis/sba/) package of Lourakis and Argyros as the underlying optimization engine. Bundler has been successfully run on many Internet photo collections, as well as more structured collections*.”
 
