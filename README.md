@@ -1,4 +1,5 @@
-## Non traditional 3D Mapping, from pointClouds to GeoJSON Polygons
+## From pointClouds to GeoJSON Polygons
+#### Notes on Non-traditional 3D Mapping
 
 “…*the only place on earth where all places are — seen from every angle, each standing clear, without any confusion or blending*" El Aleph, Jorge Luis Borges
 
