@@ -1,12 +1,6 @@
 ## Non traditional 3D Mapping, from pointClouds to GeoJSON Polygons
 
-“* …the only place on earth where all places are — seen from every angle, each standing clear, without any confusion or blending*" 
-
-The Aleph, Jorge Luis Borges
-
-“ … *el lugar donde están, sin confundirse, todos los lugares del orbe, vistos desde todos los ángulos*."
-
-El Aleph, Jorge Luis Borges
+“* …the only place on earth where all places are — seen from every angle, each standing clear, without any confusion or blending*" The Aleph, Jorge Luis Borges
 
 The following is a brief documentation of a month of research on point clouds for mapping and some of the tools I made in the way.
 
