@@ -89,3 +89,5 @@ OSM database doesn’t know to much about 3D Meshes. Basically all buildings are
 ## Conclusion
 
 For this process I had use an extraordinary convenient sample. Beside being a beautiful building The Flatiron is perfectly isolated construction. To apply this process any other buildings extra steps have to be add to this pipeline. This was mostly a proof of concept about the potential of mixing lidar information with SfM reconstructions as a way to crowd found point clouds. One that points to a future where people can contribute to open source initiatives just by sharing their pictures. 
+
+<iframe src="//player.vimeo.com/video/111857991?title=0&amp;byline=0&amp;portrait=0" width="575" height="323" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
