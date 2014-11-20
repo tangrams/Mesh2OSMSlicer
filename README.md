@@ -1,7 +1,8 @@
-## Non-traditional Crowdsourced 3D Maps
-#### From pointClouds to GeoJSON Polygons
-
 “…*the only place on earth where all places are — seen from every angle, each standing clear, without any confusion or blending*" El Aleph, Jorge Luis Borges
+
+
+## From Crowdsourced point clouds to 3D Maps
+#### By [Patricio Gonzalez Vivo](http://twitter.com/patriciogv)
 
 The following is a brief documentation of my research on point clouds as a way to crowdsource mapping and the tools I made along the way. This serves as a prove of concept that points to a future where people can contribute to open source initiatives with minimum effort and skills.
 
