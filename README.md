@@ -12,9 +12,9 @@ Point clouds are not new, but they are trending because new devices with more co
 
 #### LIDar data
 
-![00](images/00.jpg)
-
 Not too long since the invention of lasers in the ’60s, scientists have been mounting laser scanners under planes to sends pulses of light to a surface and measure the precise distance to it. Together with the geolocation of these points this technology is known as LIDAR. 
+
+![00](images/00.jpg)
 
 In the last years a new generation of smaller LIDAR devices have come to the market. They can be mounted on cars and backpacks, preserving every single point from a particular place - like holographic glass snow globes.
 
