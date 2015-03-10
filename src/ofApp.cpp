@@ -52,6 +52,7 @@ void ofApp::setup(){
     cout << "Mesh " << mesh.getVertices().size() << endl;
     centroid = toOf( getCentroid(mesh.getVertices()) );
     threshold = 100;
+    
 }
 
 //--------------------------------------------------------------
